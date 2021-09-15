@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+:root {
+  --main-color: #dd370d;
+}
+.addContact_page {
+  background-color: aquamarine;
+  height: 100vh;
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+}
+
+.form_area {
+  background-color: cadetblue;
+  width: 20rem;
+  height: 30rem;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  margin-top: 2rem;
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  border-radius: 1rem;
+}
+
+input[type='text'], input[type='email'] {
+  border-radius: 0.5rem;
+  width: 15rem;
+  outline: none;
+}
+
+.btn-outline-warning {
+  color: blueviolet;
+  border: 1px solid rgb(25, 135, 84);
+}
+
+.bar {
+  border-bottom: 2px solid red;
+  height: 5px;
+  width: 100%;
+}
+.submit{
+  
+  border: none;
+  padding: 0.4rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px #000;
+  outline: none;
+}
+.submit:hover{
+  box-shadow: 0 8px 6px -6px var(--main-color);
+}
+.contactMain{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  border-radius: 1rem;
+}
+.contactTable{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color:brown;
+  align-items: center;
+  border-radius: 1rem;
+  height: 4rem;
+  color: white;
+}
+.showDataStyle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content:space-around;
+  align-items: center; 
+  margin: 1rem;
+  background-color: blueviolet;
+  height: 3rem;
+  border-radius:1rem ;
+  
+}
