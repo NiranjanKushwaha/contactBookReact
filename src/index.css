@@ -30,6 +30,9 @@ input[type='text'], input[type='email'] {
   width: 15rem;
   outline: none;
 }
+.search{
+  border-radius:0 !important;
+}
 
 .btn-outline-warning {
   color: blueviolet;
@@ -81,4 +84,12 @@ input[type='text'], input[type='email'] {
   height: 3rem;
   border-radius:1rem ;
   
+}
+th{
+  color:#000;
+}
+
+.fa-trash-alt:hover{
+  color: #dd370d;
+  cursor: pointer;
 }

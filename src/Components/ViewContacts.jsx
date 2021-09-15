@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import TopSection from "./TopSection";
 
 const ViewContacts = () => {
@@ -29,14 +30,11 @@ const ViewContacts = () => {
     setOutput(filterArr);
   }
   renderArr = output.length > 0 ? output : records;
-  const updateFunc=(value,index)=>{
-     alert(`you want to update ${value} at index: ${index}`);
-  }
   return (
     <>
       <TopSection />
       <div className="text-center mt-2 mb-3">
-      <input type="text" value={searchText} onChange={SearchHandle}/><button onClick={()=>searchFunc(searchText)}><i className="fas fa-search"></i></button>
+      <input type="text" value={searchText} onChange={SearchHandle} className='search'/><button onClick={()=>searchFunc(searchText)}><i className="fas fa-search"></i></button>
       </div>
       <table className="table">
         <thead>
@@ -54,7 +52,7 @@ const ViewContacts = () => {
             renderArr?.map((record, index) => {
               return (
                 <tr key={index}>
-                  <th scope="row">{record.username}</th>
+                  <td>{record.username}</td>
                   <td>{record.email}</td>
                   <td>{record.worknumber}</td>
                   <td>{record.homenumber}</td>
@@ -66,7 +64,7 @@ const ViewContacts = () => {
                     ></i>
                   </td>
                   <td>
-                  <i class="fas fa-pen" onClick={()=>updateFunc(record,index)}></i>
+                  <Link className="fas fa-pen" to={`/update/${index}`}></Link>
                   </td>
                 </tr>
               );
