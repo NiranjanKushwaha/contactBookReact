@@ -29,11 +29,15 @@ const ViewContacts = () => {
     setOutput(filterArr);
   }
   renderArr = output.length > 0 ? output : records;
+  const updateFunc=(value,index)=>{
+     alert(`you want to update ${value} at index: ${index}`);
+  }
   return (
     <>
       <TopSection />
-      <br />
-      <input type="text" value={searchText} onChange={SearchHandle}/><button onClick={()=>searchFunc(searchText)}><i className="fas fa-search"></i></button><br /><br /><br />
+      <div className="text-center mt-2 mb-3">
+      <input type="text" value={searchText} onChange={SearchHandle}/><button onClick={()=>searchFunc(searchText)}><i className="fas fa-search"></i></button>
+      </div>
       <table className="table">
         <thead>
           <tr>
@@ -41,6 +45,8 @@ const ViewContacts = () => {
             <th scope="col">Email</th>
             <th scope="col">Work Number</th>
             <th scope="col">Home Number</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +64,9 @@ const ViewContacts = () => {
                       title="Delete Item"
                       onClick={() => deleteContact(record, index)}
                     ></i>
+                  </td>
+                  <td>
+                  <i class="fas fa-pen" onClick={()=>updateFunc(record,index)}></i>
                   </td>
                 </tr>
               );
