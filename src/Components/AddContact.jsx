@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import TopSection from "./TopSection";
-import ViewContacts from "./ViewContacts";
 
 const AddContact = () => {
   const getLocalStorage = () => {
     let list = JSON.parse(localStorage.getItem("contacts"));
     if (list) {
-      console.log(list);
       return list;
     } else {
       return [];
@@ -38,7 +36,6 @@ const AddContact = () => {
     let docs = localStorage.getItem("contacts");
     if (docs !== null) {
       let docArray = JSON.parse(docs) || [];
-      console.log(JSON.parse(docs));
       docArray = [...docArray, newRecord];
       localStorage.setItem("contacts", JSON.stringify(docArray));
     } else {
@@ -47,13 +44,6 @@ const AddContact = () => {
     }
     setContact({ username: "", email: "", worknumber: "", homenumber: "" });
   };
-
-  const deleteContact = (record,index) => {
-    setRecords(records.filter((el) => el !== record));
-    records.splice(index,1);
-    localStorage.setItem('contacts', JSON.stringify(records));
-  };
-
   return (
     <div className="addContact_page">
       <TopSection />
@@ -106,33 +96,6 @@ const AddContact = () => {
           <input type="submit" value="Submit" className="submit" />
         </div>
       </form>
-
-      <div>
-        <div className="contactMain">
-          <div className="contactTable">
-            <div>username</div>
-            <div>email</div>
-            <div>worknumber</div>
-            <div>homenumber</div>
-          </div>
-          {records &&
-            records?.map((record, index) => {
-              return (
-                <div className="showDataStyle" key={index}>
-                  <div>{record.username}</div>
-                  <div>{record.email}</div>
-                  <div>{record.worknumber}</div>
-                  <div>{record.homenumber}</div>
-                  <i
-                    className="far fa-trash-alt add-btn"
-                    title="Delete Item"
-                    onClick={() => deleteContact(record,index)}
-                  ></i>
-                </div>
-              );
-            })}
-        </div>
-      </div>
     </div>
   );
 };
