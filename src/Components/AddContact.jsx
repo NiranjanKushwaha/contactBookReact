@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TopSection from "./TopSection";
+import { Modal} from "react-bootstrap";
 
 const AddContact = () => {
   const getLocalStorage = () => {
@@ -10,7 +11,7 @@ const AddContact = () => {
       return [];
     }
   };
-
+  const [show, setShow] = useState(false);
   const [records, setRecords] = useState([]);
   const [contact, setContact] = useState({
     username: "",
@@ -43,6 +44,10 @@ const AddContact = () => {
       localStorage.setItem("contacts", JSON.stringify(docArray));
     }
     setContact({ username: "", email: "", worknumber: "", homenumber: "" });
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+    }, 2000);
   };
   return (
     <div className="addContact_page">
@@ -96,8 +101,12 @@ const AddContact = () => {
           <input type="submit" value="Submit" className="submit" />
         </div>
       </form>
+      <Modal show={show}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>Woohoo, Data added Successfully</Modal.Body>
+      </Modal>
     </div>
   );
 };
 
-export {AddContact};
+export { AddContact };

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TopSection from "./TopSection";
 import { useParams,useHistory  } from "react-router-dom";
+import { Modal} from "react-bootstrap";
 
 const Update = (props) => {
   let { id } = useParams();
   let history = useHistory();
+  const [show, setShow] = useState(false);
   const [contact, setContact] = useState({
     username: "",
     email: "",
@@ -30,8 +32,11 @@ const Update = (props) => {
     list[id] = newRecord;
     localStorage.setItem("contacts", JSON.stringify(list));
     setContact({ username: "", email: "", worknumber: "", homenumber: "" });
-    alert('updated Successfully');
-    history.push('/view')
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+      history.push('/view')
+    }, 2000);
   };
   return (
     <div className="addContact_page">
@@ -87,6 +92,10 @@ const Update = (props) => {
           <input type="submit" value="Update" className="submit" />
         </div>
       </form>
+      <Modal show={show}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>Great, Contact Updated Successfully</Modal.Body>
+      </Modal>
     </div>
   );
 };
