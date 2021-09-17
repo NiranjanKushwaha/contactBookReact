@@ -2,6 +2,9 @@ body {
   margin: 0;
   font-family: 'Archivo Narrow', sans-serif;
 }
+.row{
+  padding: 0%;
+}
 :root {
   --main-color: #dd370d;
 }
@@ -92,4 +95,12 @@ th{
 .fa-trash-alt:hover{
   color: #dd370d;
   cursor: pointer;
+}
+
+.pageNotFound{
+  width:100%;
+  height: 100vh;
+  background-image: url('./assets/pagenotfound.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
