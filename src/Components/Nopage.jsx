@@ -3,8 +3,8 @@ import React from 'react';
 
 const pageNotFound = () => {
     return (
-        <div className='pageNotFound'>
-            <h1>Page Not found</h1>
+        <div>
+            <h1>Page NOT Exist</h1>
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import TopSection from "./TopSection";
+import Header from "./Header";
 import { Modal} from "react-bootstrap";
 
-const AddContact = () => {
-  const getLocalStorage = () => {
+const AddSection = () => {
+  const gettinLocalStorageData = () => {
     let list = JSON.parse(localStorage.getItem("contacts"));
     if (list) {
       return list;
@@ -11,8 +11,8 @@ const AddContact = () => {
       return [];
     }
   };
-  const [show, setShow] = useState(false);
-  const [records, setRecords] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [allData, setAllData] = useState([]);
   const [contact, setContact] = useState({
     username: "",
     email: "",
@@ -21,10 +21,10 @@ const AddContact = () => {
   });
 
   useEffect(() => {
-    setRecords(getLocalStorage());
+    setAllData(gettinLocalStorageData());
   }, []);
 
-  const handleInput = (e) => {
+  const handlingEnterData = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setContact({ ...contact, [name]: value });
@@ -33,7 +33,7 @@ const AddContact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newRecord = { ...contact, id: new Date().getTime().toString() };
-    setRecords([...records, newRecord]);
+    setAllData([...allData, newRecord]);
     let docs = localStorage.getItem("contacts");
     if (docs !== null) {
       let docArray = JSON.parse(docs) || [];
@@ -44,15 +44,15 @@ const AddContact = () => {
       localStorage.setItem("contacts", JSON.stringify(docArray));
     }
     setContact({ username: "", email: "", worknumber: "", homenumber: "" });
-    setShow(true);
+    setVisible(true);
     setTimeout(() => {
-      setShow(false);
+      setVisible(false);
     }, 2000);
   };
   return (
-    <div className="addContact_page">
-      <TopSection />
-      <form className="form_area" onSubmit={handleSubmit} name="contactform">
+    <div className="AddPage">
+      <Header />
+      <form className="addDataForm" onSubmit={handleSubmit} name="addForm">
         <div>
           <label htmlFor="username">Enter Name:</label>
           <br />
@@ -60,7 +60,7 @@ const AddContact = () => {
             type="text"
             autoComplete="off"
             value={contact.username}
-            onChange={handleInput}
+            onChange={handlingEnterData}
             name="username"
             required
           />
@@ -71,7 +71,7 @@ const AddContact = () => {
             type="email"
             autoComplete="off"
             value={contact.email}
-            onChange={handleInput}
+            onChange={handlingEnterData}
             name="email"
             required
           />
@@ -82,7 +82,7 @@ const AddContact = () => {
             type="text"
             autoComplete="off"
             value={contact.worknumber}
-            onChange={handleInput}
+            onChange={handlingEnterData}
             name="worknumber"
             required
           />
@@ -93,15 +93,17 @@ const AddContact = () => {
             type="text"
             autoComplete="off"
             value={contact.homenumber}
-            onChange={handleInput}
+            onChange={handlingEnterData}
             name="homenumber"
             required
           />
           <br /> <br />
-          <input type="submit" value="Submit" className="submit" />
+          <div className="text-center submit-btn">
+            <button type="submit"  className="submit">submit Data</button>
+          </div>
         </div>
       </form>
-      <Modal show={show}>
+      <Modal show={visible}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>Woohoo, Data added Successfully</Modal.Body>
       </Modal>
@@ -109,4 +111,4 @@ const AddContact = () => {
   );
 };
 
-export { AddContact };
+export { AddSection };

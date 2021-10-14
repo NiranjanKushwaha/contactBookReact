@@ -8,44 +8,75 @@ body {
 :root {
   --main-color: #dd370d;
 }
-.addContact_page {
-  background-color: aquamarine;
-  height: 100vh;
-  background-color: #8BC6EC;
-  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+.top{
+ width:100%;
+ height: fit-content;
+ display: flex;
+ justify-content: space-between;
 }
 
-.form_area {
-  background-color: cadetblue;
+.right{
+  display: flex;
+}
+.navbar-brand{
+  color: chartreuse;
+  margin-left: 1rem;
+}
+
+.AddPage {
+  background-color: #000;
+  height: 100vh;
+}
+
+.addDataForm,.update_form {
+  background-color:#fff;
+  color: cadetblue;
   width: 20rem;
   height: 30rem;
   margin: 0 auto;
   display: grid;
   place-items: center;
   margin-top: 2rem;
-  background-color: #85FFBD;
-  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+}
+.updatePage{
+  background-color: black;
+  height: 100vh;
+}
+
+.submit-btn>button{
+  color: chartreuse;
+  background-color: #000;
   border-radius: 1rem;
 }
 
+.submit-btn>button:hover{
+  background-color: darkslateblue;
+  color: azure;
+}
+
 input[type='text'], input[type='email'] {
-  border-radius: 0.5rem;
   width: 15rem;
   outline: none;
 }
-.search{
-  border-radius:0 !important;
+.search-area{
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0rem;
+}
+.searchField{
+  border-radius:1rem !important;
+  background-color: #000;
+  color: chartreuse;
+}
+.searchField::placeholder{
+  color:#fff;
+  padding-left: 1rem;
 }
 
-.btn-outline-warning {
-  color: blueviolet;
-  border: 1px solid rgb(25, 135, 84);
-}
-
-.bar {
-  border-bottom: 2px solid red;
-  height: 5px;
-  width: 100%;
+.action_options> *{
+ display: inline-block;
+ margin-left: 2rem;
 }
 .submit{
   
@@ -88,19 +119,24 @@ input[type='text'], input[type='email'] {
   border-radius:1rem ;
   
 }
+.table{
+  margin-top: 3rem;
+  width: fit-content;
+  margin:0 auto;
+  background-color: #000;
+  color: aliceblue;
+}
+
 th{
-  color:#000;
+  color:greenyellow;
+  border: 1px solid greenyellow;
+}
+
+td{
+  border: 1px solid greenyellow;
 }
 
 .fa-trash-alt:hover{
   color: #dd370d;
   cursor: pointer;
-}
-
-.pageNotFound{
-  width:100%;
-  height: 100vh;
-  background-image: url('./assets/pagenotfound.png');
-  background-size: contain;
-  background-repeat: no-repeat;
 }

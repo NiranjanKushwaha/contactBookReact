@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TopSection from "./TopSection";
+import Header from "./Header";
 import { useParams,useHistory  } from "react-router-dom";
 import { Modal} from "react-bootstrap";
 
@@ -39,9 +39,9 @@ const Update = (props) => {
     }, 2000);
   };
   return (
-    <div className="addContact_page">
-      <TopSection />
-      <form className="form_area" onSubmit={Update} name="contactform">
+    <div className="updatePage">
+      <Header />
+      <form className="update_form" onSubmit={Update} name="contactform">
         <div>
           <label htmlFor="username">Enter Name:</label>
           <br />
@@ -89,7 +89,9 @@ const Update = (props) => {
             required
           />
           <br /> <br />
-          <input type="submit" value="Update" className="submit" />
+          <div className="text-center submit-btn">
+            <button type="submit"  className="submit">Update Data</button>
+          </div>
         </div>
       </form>
       <Modal show={show}>
